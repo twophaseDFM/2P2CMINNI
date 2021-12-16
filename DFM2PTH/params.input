@@ -1,61 +1,74 @@
 [TimeLoop]
-TEnd = 1e9 # [s]
-DtInitial = 10 # [s]
-MaxTimeStepSize = 1e6 # [s]
-
-[Problem]
-EnableGravity = 1
+DtInitial									 = 250 # [s]
+TEnd										 = 1e9 # [s]
+MaxTimeStepSize								 = 1e7  #[s]
 
 [Grid]
-#File = ./grids/complex.msh
-File = ./grids/DFM4_aperture_dist.msh
-#File = ./grids/network.msh
-DomainMarkers = true # enable domain markers
+#LowerLeft									 = 0 0
+#UpperRight									 = 600 100
+#Cells										 = 125 50
+#File										 = ./../grids/2pncmin.msh
+Positions0									 = 0 600
+Positions1 									 = 0 100
+Cells0										 = 120
+Cells1 										 = 50
+Grading0 									 = 1.0
+Grading1									 = 1.0
 
-[Matrix]
+[Problem]
+Name										 = 2prandomK # [-] the name of the output files
+DepthBOR									 = 2500 # [m] depth below ground surface
 
-Problem.IsInjectCO2 = 1
-Problem.IsPureCO2 = 0
+[Injection]
+InjectionRate								 = 2e-3
+InjectionTemperature						 = 303.15 # [K] 40°C initial temperature in the reservoir
+InjectionPressure							 = 2.5e7
+InjectionYMax								 = 20
+InjectionYMin 								 = 0
 
-Problem.Name = matrix_rdam_fullycoupled
+[Production]
+ProductionYMax								 = 100
+ProductionYMin								 = 80
+ProductionLowLimit 							 = 80
+ProductionBoundary							 = 580   # 4 elements away from boundary to avoid boundary effects 
+ProductionXMax 								 = 580
+elementX 									 = 5
 
-Problem.InjectionRate = 1e-3   # [kg/s/m2]
-Problem.InjectionTemperature = 303.15   # [K]
-SpatialParams.PermeabilityRock = 1e-15
-SpatialParams.Porosity = 0.01
-SpatialParams.VanGenuchtenAlpha = 1e-3
-SpatialParams.VanGenuchtenN = 3
-SpatialParams.Snr = 0.0
-SpatialParams.Swr = 0.0
+[SpatialParams]
+porosity 									 = 0.3	
+initialPorosity								 = 0.3
+material.Swr								 = 0.1
+material.Snr 								 = 0.0
+material.VanGenuchtenN				      	 = 1.76
+material.VanGenuchtenAlpha					 = 2e-4
 
-[Fracture]
-Problem.IsPureCO2 = 0
+[Reaction]
+R											 = 8
+Ca_k0 										 = 1e-12
+Ca_E										 = 1
+Ca_Max										 = 1e-2
+Na_k0 										 = 1e-7
+Na_E										 = 1
+Na_Max										 = 0.26
 
-Problem.Name = fractures_rdam_fullycoupled
+[Initial]
+initialMinVolumeFraction 					 = 0.1
+initialCaIon 								 = 1e-5
+initialCaCO3								 = 5e-2
+initialNaCl									 = 5e-2
+InitialSalinity							 	 = 0.02
 
-SpatialParams.Aperture1 = 1.9e-3
-SpatialParams.Aperture2 = 1.45e-3
-SpatialParams.Aperture3 = 1e-3
-SpatialParams.Aperture4 = 0.55e-3
-SpatialParams.Aperture5 = 0.1e-3
-
-Problem.Stiffness = 500e9  # 500GPa/m
-Problem.WettingPhaseThermalExpansionCoefficient = 1e-4     # 1/K
-Problem.NonWettingPhaseThermalExpansionCoefficient = 1e-5     # 1/K
-Problem.a = 1
-Problem.b = 1
-
-SpatialParams.Porosity = 0.85
-
-SpatialParams.VanGenuchtenAlpha = 1e-3
-SpatialParams.VanGenuchtenN = 3
-SpatialParams.Swr = 0.0
-SpatialParams.Snr = 0.0
-
-[Component]
-SolidDensity = 2700
-SolidThermalConductivity = 2.8
-SolidHeatCapacity = 790
+[Gstat]
+ControlFile 								 = control.gstat
+InputFile 									 = gstatInput111.txt
+OutputFilePrefix 							 = permeability
 
 [Brine]
-Salinity = 1e-1
+Salinity									 = 0.2
+
+[Vtk]
+AddVelocity									 = 1
+
+[Newton]
+MaxRelativeShift 							 = 1e-9
+
