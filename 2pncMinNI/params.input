@@ -1,0 +1,74 @@
+[TimeLoop]
+DtInitial									 = 250 # [s]
+TEnd										 = 1e9 # [s]
+MaxTimeStepSize								 = 1e7  #[s]
+
+[Grid]
+#LowerLeft									 = 0 0
+#UpperRight									 = 600 100
+#Cells										 = 125 50
+#File										 = ./../grids/2pncmin.msh
+Positions0									 = 0 600
+Positions1 									 = 0 100
+Cells0										 = 120
+Cells1 										 = 50
+Grading0 									 = 1.0
+Grading1									 = 1.0
+
+[Problem]
+Name										 = 2prandomK # [-] the name of the output files
+DepthBOR									 = 2500 # [m] depth below ground surface
+
+[Injection]
+InjectionRate								 = 2e-3
+InjectionTemperature						 = 303.15 # [K] 40°C initial temperature in the reservoir
+InjectionPressure							 = 2.5e7
+InjectionYMax								 = 20
+InjectionYMin 								 = 0
+
+[Production]
+ProductionYMax								 = 100
+ProductionYMin								 = 80
+ProductionLowLimit 							 = 80
+ProductionBoundary							 = 580   # 4 elements away from boundary to avoid boundary effects 
+ProductionXMax 								 = 580
+elementX 									 = 5
+
+[SpatialParams]
+porosity 									 = 0.3	
+initialPorosity								 = 0.3
+material.Swr								 = 0.1
+material.Snr 								 = 0.0
+material.VanGenuchtenN				      	 = 1.76
+material.VanGenuchtenAlpha					 = 2e-4
+
+[Reaction]
+R											 = 8
+Ca_k0 										 = 1e-12
+Ca_E										 = 1
+Ca_Max										 = 1e-2
+Na_k0 										 = 1e-7
+Na_E										 = 1
+Na_Max										 = 0.26
+
+[Initial]
+initialMinVolumeFraction 					 = 0.1
+initialCaIon 								 = 1e-5
+initialCaCO3								 = 5e-2
+initialNaCl									 = 5e-2
+InitialSalinity							 	 = 0.02
+
+[Gstat]
+ControlFile 								 = control.gstat
+InputFile 									 = gstatInput111.txt
+OutputFilePrefix 							 = permeability
+
+[Brine]
+Salinity									 = 0.2
+
+[Vtk]
+AddVelocity									 = 1
+
+[Newton]
+MaxRelativeShift 							 = 1e-9
+
