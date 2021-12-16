@@ -1,4 +1,4 @@
-/* begin DFM2PTH
+/* begin tpncmin
    put the definitions for config.h specific to
    your project here. Everything above will be
    overwritten
@@ -28,18 +28,18 @@
 
 /* end private */
 
-/* Define to the version of DFM2PTH */
-#define DFM2PTH_VERSION "@DFM2PTH_VERSION@"
+/* Define to the version of tpncmin */
+#define TPNCMIN_VERSION "@TPNCMIN_VERSION@"
 
-/* Define to the major version of DFM2PTH */
-#define DFM2PTH_VERSION_MAJOR @DFM2PTH_VERSION_MAJOR@
+/* Define to the major version of tpncmin */
+#define TPNCMIN_VERSION_MAJOR @TPNCMIN_VERSION_MAJOR@
 
-/* Define to the minor version of DFM2PTH */
-#define DFM2PTH_VERSION_MINOR @DFM2PTH_VERSION_MINOR@
+/* Define to the minor version of tpncmin */
+#define TPNCMIN_VERSION_MINOR @TPNCMIN_VERSION_MINOR@
 
-/* Define to the revision of DFM2PTH */
-#define DFM2PTH_VERSION_REVISION @DFM2PTH_VERSION_REVISION@
+/* Define to the revision of tpncmin */
+#define TPNCMIN_VERSION_REVISION @TPNCMIN_VERSION_REVISION@
 
-/* end DFM2PTH
+/* end tpncmin
    Everything below here will be overwritten
 */

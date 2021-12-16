@@ -3,8 +3,8 @@
 ################################
 
 # Name of the module
-Module: DFM2PTH
-Version: 0.1
+Module: tpncmin
+Version: 1.0
 Maintainer: dejian.zhou@geo.uni-goettingen.de
 # Required build dependencies
 Depends: dumux
