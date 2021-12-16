@@ -24,7 +24,7 @@ add_subdirectory(src)
 add_subdirectory(dune)
 add_subdirectory(doc)
 add_subdirectory(cmake/modules)
-add_subdirectory(DFM2PTH)
+add_subdirectory(2p2cMinNI)
 
 # finalize the dune project, e.g. generating config.h etc.
 finalize_dune_project(GENERATE_CONFIG_H_CMAKE)
